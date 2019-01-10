@@ -1,2 +1,2 @@
 # NumberGuesser
-New to C#, familiarising with syntax
+New to C# (10.01.19), familiarising with syntax and language structure
