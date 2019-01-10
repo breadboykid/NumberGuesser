@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +43,7 @@ namespace NumberGuesser
 
                     if (!int.TryParse(input, out guess))
                     {
-                        Incorrect("input");
+                        PrintMessage(ConsoleColor.Red, "Invalid Input, try again");
                         continue;
                     }
 
@@ -53,12 +53,12 @@ namespace NumberGuesser
                     //Match guess to correct number
                     if (guess != correctNumber)
                     {
-                        Incorrect("number");
+                        PrintMessage(ConsoleColor.Red, "Wrong number guessed, try again");
                         continue;
                     }
                 }
 
-                SucessMessage();
+                PrintMessage(ConsoleColor.Yellow, "Congrats! You guessed the correct number");
                 play = PlayAgain();
             }
         }
@@ -101,18 +101,10 @@ namespace NumberGuesser
             return correctNumber;
         }
 
-        static void Incorrect(string type)
+        static void PrintMessage(ConsoleColor color, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Incorrect {0}, try again", type);
-            Console.WriteLine("Guess again:");
-            Console.ResetColor();
-        }
-
-        static void SucessMessage()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Congrats, You guess the correct number!");
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
             Console.ResetColor();
         }
 
